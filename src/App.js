@@ -1,53 +1,43 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import React from 'react'
 import ReactDOM  from 'react-dom/client'
 
-const heading = React.createElement("h1", {id:"headiing"}, "Hello Aishwarya, how are you?");
-//React Element
-const jsxHeading = <h1 id = "heading">Hi Aishwarya</h1>
+const Title = () => {
+return <h1>Welcome everyone</h1>
+}
 
-console.log(jsxHeading)
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
+const title = (
+  <div>
+    <h2>This is react title element</h2>
+  </div>
+)
 
 //React componenet
 const HeadingComponent = () => {
-  return <h1>namaste everyone from functional componenet</h1>
+  return (
+    <div>
+      <Title/>
+      <h1>namaste everyone from functional componenet</h1>
+    </div>
+
+  )
 };
+
+const num = 100;
 
 const HeadingComponent1 = () => (
   <div id = "container">
-    <h1 className='heading'>namaste All </h1>
+    {num}
+    {title}
+    {`called using HeadingComponent()`}
+    {HeadingComponent()}
+    {`called using <HeadingComponent/>`}
+    <HeadingComponent/>
+    <h1 className='heading'>This is called componenet composition</h1>
   </div>
 );
 //both the above syntax for HeadingComponent and HeadingComponent1 are works same 
 
 // root.render(jsxHeading);
 //we can render react component as below 
-root.render(<HeadingComponent/>)
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<HeadingComponent1/>)
