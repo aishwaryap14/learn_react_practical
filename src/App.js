@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM  from 'react-dom/client'
+import { Restaurants } from './data'
 /*
 * Header
   - LOGO
@@ -42,15 +43,18 @@ const Header = () => {
 }
 
 const RestaurantCard = (props) => {
-  console.log(props)
-  
+  console.log(Restaurants)
+  const {resData} = props
+  const {name, cuisines, avgRating, costForTwo} = resData?.info;
+  const {deliveryTime} = resData.info.sla;
   return(
     <div className='res-card' style={stylecard}>
-      <img className='res-logo' alt='res-logo' src = {props.imgLink}/>
-      <h3>{props.resName}</h3>
-      <h5>{props.cuisin}</h5>
-      <h5>{props.rating}</h5>
-      <h5>{props.deliveryTime}</h5>
+      <img className='res-logo' alt='res-logo' src = {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.info.cloudinaryImageId}/>
+      <h3>{name}</h3>
+      <h5>{cuisines.join(", ")}</h5>
+      <h5>{avgRating}</h5>
+      <h5>{costForTwo}</h5>
+      <h5>{deliveryTime} minutes</h5>
     </div>
   )
 }
@@ -60,12 +64,10 @@ const Body = () => {
     <div className='body'>
       <div className='search'>Search</div>
       <div className='res-container'>
-        <RestaurantCard resName = 'Meghana Foods' cuisin = 'Biryani, North Indian, Asian' rating = '4.3 stars' deliveryTime = '38 Minutes' imgLink = 'https://www.cookwithmanali.com/wp-content/uploads/2020/05/Instant-Pot-Paneer-Biryani-500x500.jpg'/>
-        <RestaurantCard resName = 'KFC' cuisin = 'chicken nugg, burger' rating = '4.0 stars' deliveryTime = '40 minutes' imgLink = 'https://content.jdmagicbox.com/v2/comp/mumbai/m1/022pxx22.xx22.200829100417.u5m1/catalogue/kfc-mumbai-fast-food-1gtb5g7j7r.jpg'/>
-        <RestaurantCard resName = 'Diminos' cuisin = 'pizza, slides, clod drink' rating = '4.4 stars' deliveryTime = '30 minutes' imgLink = 'https://www.jubilantfoodworks.com/images/brand_pic3.jpg'/>
-        <RestaurantCard resName = 'Good Bowl' cuisin = 'Biryani, rice bowls' rating = '4.1 stars' deliveryTime = '20 minutes' imgLink = 'https://b.zmtcdn.com/data/pictures/chains/6/18884536/a47e79a5630151521ab801b4bafbb1f4.jpg?fit=around|750:500&crop=750:500;*,*'/>
-        <RestaurantCard resName = 'cakes mania' cuisin = 'cakes, pastries' rating = '4.0 stars' deliveryTime = '30 minutes' imgLink = 'https://tfcakes.in/images/products/230202_121618_424_398.jpg'/>
-        <RestaurantCard resName = 'Burger king' cuisin = 'Burger, soft drink' rating = '4.3 stars' deliveryTime = '25 minutes' imgLink = 'https://www.bristolairport.co.uk/media/zrccwpo3/burger-king-og-1200-x-630.jpg'/>
+        {/* <RestaurantCard resData = {Restaurants[0]}/> */}
+        {
+          Restaurants.map(restautant => <RestaurantCard resData = {restautant}/>)
+        }
       </div>
     </div>
   )
