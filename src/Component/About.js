@@ -4,22 +4,20 @@ import React  from 'react'
 class About extends React.Component{
     constructor(props){
         super(props)
-        console.log("parent constructor")
+        // console.log("parent constructor")
     }
 
     componentDidMount() {
-        console.log("parent componentDidMount")
+        // console.log("parent componentDidMount")
     }
 
     render(){
-        console.log("parent render")
+        // console.log("parent render")
         return(
             <div>
                 <h1>About Us</h1>
-                <User name = {"Aishwarya P"} location={ "Bangalore"}/>
+                {/* <User name = {"Aishwarya P"} location={ "Bangalore"}/> */}
                 <UserClass name = {"First"} location = {"Nashik, Maharashtra"}/>
-                <UserClass name = {"second"} location = {"Nashik, Maharashtra"}/>
-                <UserClass name = {"third"} location = {"Nashik, Maharashtra"}/>
             </div>
         )
     }
