@@ -5,7 +5,8 @@ import Body from './Component/Body'
 import About from './Component/About'
 import Contact from './Component/Contact'
 import Error from './Component/Error'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import RestaurantMenu from './Component/RestaurantMenu'
+import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom'
 /*
 * Header
   - LOGO
@@ -30,7 +31,7 @@ const AppLayout = () => {
   return(
     <div className='app'>
       <Header/>
-      <Body/>
+      <Outlet/>
     </div>
   )
 }
@@ -39,15 +40,25 @@ const appRouter = createBrowserRouter([
   {
     path : "/",
     element : <AppLayout/> ,
+    children : [
+      {
+        path : "/",
+        element : <Body/>
+      },
+      {
+        path : "/about",
+        element : <About/>
+      },
+      {
+        path : "/contact",
+        element : <Contact/>
+      },
+      {
+        path : "restaurant/:resId",
+        element : <RestaurantMenu/>
+      }
+    ],
     errorElement : <Error/>
-  },
-  {
-    path : "/about",
-    element : <About/>
-  },
-  {
-    path : "/contact",
-    element : <Contact/>
   }
 ]);
 
