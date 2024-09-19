@@ -85,3 +85,8 @@
   flex-direction: column;
   width: -webkit-fill-available;
 }
+.user-card {
+  padding : 10px;
+  border: 1px solid black;
+  margin: 10px;
+}
